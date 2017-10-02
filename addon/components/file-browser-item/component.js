@@ -40,7 +40,9 @@ export default Ember.Component.extend({
         return guid ? pathJoin(window.location.origin, guid) : undefined;
     }),
     click(e) {
-        if (e.shiftKey || e.metaKey) {
+        if((e.metaKey || e.ctrlKey) && e.target.nodeName == 'A') {
+            window.open(this.get('link'));
+        } else if (e.shiftKey || e.metaKey) {
             this.sendAction('selectMultiple', this.get('item'), e.metaKey);
         } else {
             this.sendAction('selectItem', this.get('item'));
