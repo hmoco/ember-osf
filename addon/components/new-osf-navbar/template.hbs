@@ -39,10 +39,9 @@
                     {{#each (build-secondary-nav-links currentService) as |navLink|}}
                         {{#if (and (eq currentService 'HOME') (eq navLink.type "search"))}}
                             <li>
-                                {{!TOGGLE SEARCH BUTTON FOR HOME SERVICE}}
-                                <button class="btn-link search-toggle" {{action 'toggleSearch'}} {{action 'click' 'button' (concat 'Navbar - ' currentService navLink.name)}}>
+                                <a href="{{navLink.href}}" onclick={{action 'click' 'link' (concat 'Navbar - ' navlink.name)}}>
                                     {{t navLink.name}}
-                                </button>
+                                </a>
                             </li>
                         {{else}}
                             {{!SERVICE LINK}}
